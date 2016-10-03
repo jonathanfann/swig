@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Swig by jonathanfann</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Swig</h1>
+      <h2 class="project-tagline">Take a swig of the best template engine for JavaScript.</h2>
+      <a href="https://github.com/jonathanfann/swig" class="btn">View on GitHub</a>
+      <a href="https://github.com/jonathanfann/swig/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jonathanfann/swig/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="swig----" class="anchor" href="#swig----" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Swig <a href="http://travis-ci.org/paularmstrong/swig"><img src="http://img.shields.io/travis/paularmstrong/swig/master.svg?style=flat" alt="Build Status"></a> <a href="https://gemnasium.com/paularmstrong/swig"><img src="http://img.shields.io/gemnasium/paularmstrong/swig.svg?style=flat" alt="Dependency Status"></a> <a href="https://www.npmjs.org/package/swig"><img src="http://img.shields.io/npm/v/swig.svg?style=flat" alt="NPM version"></a> <a href="https://www.npmjs.org/package/swig"><img src="http://img.shields.io/npm/dm/swig.svg?style=flat" alt="NPM Downloads"></a>
+</h1>
+
+<p><a href="http://paularmstrong.github.io/swig/">Swig</a> is an awesome, Django/Jinja-like template engine for node.js.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Available for node.js <strong>and</strong> major web browsers!</li>
+<li>
+<a href="http://expressjs.com/">Express</a> compatible.</li>
+<li>Object-Oriented template inheritance.</li>
+<li>Apply filters and transformations to output in your templates.</li>
+<li>Automatically escapes all output for safe HTML rendering.</li>
+<li>Lots of iteration and conditionals supported.</li>
+<li>Robust without the bloat.</li>
+<li>Extendable and customizable. See <a href="https://github.com/paularmstrong/swig-extras">Swig-Extras</a> for some examples.</li>
+<li>Great <a href="http://paularmstrong.github.io/swig/coverage.html">code coverage</a>.</li>
+</ul>
+
+<h2>
+<a id="need-help-have-questions-comments" class="anchor" href="#need-help-have-questions-comments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Need Help? Have Questions? Comments?</h2>
+
+<ul>
+<li><a href="http://groups.google.com/forum/#!forum/swig-templates">Mailing List/Google Group</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/swig-template">StackOverflow</a></li>
+<li><a href="https://github.com/paularmstrong/swig/wiki/Migrating-from-v0.x.x-to-v1.0.0">Migration Guide</a></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>npm install swig
+</code></pre>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p>All documentation can be viewed online on the <a href="http://paularmstrong.github.io/swig/">Swig Website</a>.</p>
+
+<h2>
+<a id="basic-example" class="anchor" href="#basic-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic Example</h2>
+
+<h3>
+<a id="template-code" class="anchor" href="#template-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Template code</h3>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">h1</span>&gt;{{ pagename|title }}&lt;/<span class="pl-ent">h1</span>&gt;
+&lt;<span class="pl-ent">ul</span>&gt;
+{% for author in authors %}
+    &lt;<span class="pl-ent">li</span>{% <span class="pl-e">if</span> <span class="pl-e">loop</span>.<span class="pl-e">first</span> %} <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>first<span class="pl-pds">"</span></span>{% <span class="pl-e">endif</span> %}&gt;{{ author }}&lt;/<span class="pl-ent">li</span>&gt;
+{% endfor %}
+&lt;/<span class="pl-ent">ul</span>&gt;</pre></div>
+
+<h3>
+<a id="nodejs-code" class="anchor" href="#nodejs-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>node.js code</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> swig  <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>swig<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> template <span class="pl-k">=</span> <span class="pl-smi">swig</span>.<span class="pl-en">compileFile</span>(<span class="pl-s"><span class="pl-pds">'</span>/absolute/path/to/template.html<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> output <span class="pl-k">=</span> <span class="pl-en">template</span>({
+    pagename<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>awesome people<span class="pl-pds">'</span></span>,
+    authors<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">'</span>Paul<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Jim<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Jane<span class="pl-pds">'</span></span>]
+});</pre></div>
+
+<h3>
+<a id="output" class="anchor" href="#output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output</h3>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">h1</span>&gt;Awesome People&lt;/<span class="pl-ent">h1</span>&gt;
+&lt;<span class="pl-ent">ul</span>&gt;
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>first<span class="pl-pds">"</span></span>&gt;Paul&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;Jim&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;Jane&lt;/<span class="pl-ent">li</span>&gt;
+&lt;/<span class="pl-ent">ul</span>&gt;</pre></div>
+
+<p>For working example see <a href="https://github.com/paularmstrong/swig/tree/master/examples/basic">examples/basic</a></p>
+
+<h2>
+<a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How it works</h2>
+
+<p>Swig reads template files and translates them into cached javascript functions. When we later render a template we call the evaluated function, passing a context object as an argument.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2010-2013 Paul Armstrong</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jonathanfann/swig">Swig</a> is maintained by <a href="https://github.com/jonathanfann">jonathanfann</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
