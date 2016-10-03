@@ -1,4 +1,4 @@
-NOT MAINTAINED
+UPDATE COMING SOON
 ====
 
 Fork and use at your own risk.
